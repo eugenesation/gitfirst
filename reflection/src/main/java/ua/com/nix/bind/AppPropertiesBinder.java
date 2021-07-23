@@ -16,7 +16,7 @@ public class AppPropertiesBinder {
         try {
             object = type.getConstructor().newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         }
         Class<?> classOfInstance = object.getClass();
         Field[] fields = classOfInstance.getFields();
@@ -40,7 +40,7 @@ public class AppPropertiesBinder {
                 System.out.println(Modifier.toString(field.getModifiers()) + " " + field.getType().getTypeName() + " "
                         + field.getName() + " = " + field.get(object));
             } catch (IllegalAccessException e) {
-                throw new RuntimeException();
+                throw new RuntimeException(e);
             }
         }
         System.out.println("\nAfter  initialization: " + type);
