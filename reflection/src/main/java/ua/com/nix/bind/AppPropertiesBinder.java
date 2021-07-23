@@ -10,7 +10,7 @@ import java.util.Properties;
 public class AppPropertiesBinder {
 
 
-    public <T> T bind(Class<T> type, Properties props) {
+    public <T> void bind(Class<T> type, Properties props) {
 
         T object;
         try {
@@ -44,6 +44,5 @@ public class AppPropertiesBinder {
             }
         }
         System.out.println("\nAfter  initialization: " + type);
-        return object;
     }
 }
