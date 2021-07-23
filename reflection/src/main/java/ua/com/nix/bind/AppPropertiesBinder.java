@@ -1,20 +1,18 @@
-package ua.com.nix.taskRunner;
+package ua.com.nix.bind;
 
 import ua.com.nix.annotation.PropertyKey;
 import ua.com.nix.properties.AppProperties;
+import ua.com.nix.properties.PropertyLoader;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UncheckedIOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Properties;
 
-public class AppPropertiesRun {
+public class AppPropertiesBinder {
 
     public void getProperties() {
 
-        Properties props = loadProperties();
+        Properties props = PropertyLoader.loadProperties();
 
         Object instance = new AppProperties();
         Class<?> classOfInstance = instance.getClass();
@@ -43,16 +41,5 @@ public class AppPropertiesRun {
             }
         }
         System.out.println("\nAfter  initialization: " + instance);
-    }
-
-
-    private static Properties loadProperties() {
-        Properties props = new Properties();
-        try(InputStream input = AppPropertiesRun.class.getResourceAsStream("/app.properties")) {
-            props.load(input);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
-        return props;
     }
 }
