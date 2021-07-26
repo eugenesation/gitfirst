@@ -1,0 +1,4 @@
+id, name, isSacked
+1, Eugene, false
+2, Ksenia, false
+3, Kolya, true
