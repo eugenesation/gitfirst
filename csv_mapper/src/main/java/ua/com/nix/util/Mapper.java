@@ -41,7 +41,7 @@ public class Mapper {
                             field.set(object, Boolean.parseBoolean(tableData.getCell(i, field.getAnnotation(CsvCell.class).value())));
                         }
                     } catch (IllegalAccessException e) {
-                        throw new RuntimeException();
+                        throw new RuntimeException(e);
                     }
                 }
             }

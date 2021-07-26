@@ -1,21 +1,12 @@
 package ua.com.nix.table;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CsvTable {
     private final List<String[]> tableData;
 
-    public CsvTable(){
-        this.tableData = new ArrayList<>();
-    }
-
     public CsvTable(List<String[]> data){
         this.tableData = data;
-    }
-
-    public String getCell(int row, int column){
-        return this.tableData.get(row)[column];
     }
 
     public String getCell(int row, String columnName){
