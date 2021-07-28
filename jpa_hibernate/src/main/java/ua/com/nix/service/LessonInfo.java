@@ -10,11 +10,8 @@ public class LessonInfo {
 
     public Optional<Lesson> getLessonInfo(Session session, Integer studentId) {
         Query<Lesson> getLessonInfoQuery = session.createQuery(
-                "select l from Lesson l join " +
-                        "l.group g join " +
-                        "g.students st where st.id = ?1 and current_timestamp < l.startDateTime order by " +
-                        "l.startDateTime",
-                Lesson.class);
+                "select l from Lesson l join l.group g join g.students st where st.id = ?1 " +
+                        "and current_timestamp < l.startDateTime order by l.startDateTime", Lesson.class);
 
         getLessonInfoQuery.setMaxResults(1);
 

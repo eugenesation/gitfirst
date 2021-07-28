@@ -13,15 +13,13 @@ public class Starter {
             int studentId = 1;
             String studentName = "Evgeny", studentSurname = "Smirnov";
 
-            if (lessonInfo.getLessonInfo(session, studentId).isEmpty()) {
-                System.out.println("Student doesn't have lessons now");
-            } else {
+            if (lessonInfo.getLessonInfo(session, studentId).isPresent()) {
                 Lesson lesson = lessonInfo.getLessonInfo(session, studentId).get();
-                System.out.println("Students` " + studentName + " " + studentSurname + " closer lesson is " +
-                        lesson.getName() +
-                        ", started at " + lesson.getStartDateTime() +
-                        ", teacher " + lesson.getTeacher().getName() + " " + lesson.getTeacher().getSurname() +
-                        ", topic " + lesson.getLessonTopic().getName());
+                System.out.println("Student: " + studentName + " " + studentSurname + "\nCloser lesson is " +
+                        lesson.getName() + "\nStarted at " + lesson.getStartDateTime() +
+                        "\nTeacher " + lesson.getTeacher().getName() + " " + lesson.getTeacher().getSurname());
+            } else {
+                System.out.println("Student doesn't have lessons now");
             }
         }
     }
