@@ -13,8 +13,8 @@ public class Starter {
             int studentId = 1;
             String studentName = "Evgeny", studentSurname = "Smirnov";
 
-            if (lessonInfo.getLessonInfo(session, studentId).isPresent()) {
-                Lesson lesson = lessonInfo.getLessonInfo(session, studentId).get();
+            if (lessonInfo.getLessonInfo(session, studentId) != null) {
+                Lesson lesson = lessonInfo.getLessonInfo(session, studentId);
                 System.out.println("Student: " + studentName + " " + studentSurname + "\nCloser lesson is " +
                         lesson.getName() + "\nStarted at " + lesson.getStartDateTime() +
                         "\nTeacher " + lesson.getTeacher().getName() + " " + lesson.getTeacher().getSurname());
