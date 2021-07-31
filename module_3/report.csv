@@ -1,0 +1,5 @@
+"account_number","transfer_amount","category","type","issued_at","status","reason"
+"33432123","200.00",,,"2021-07-31T10:21:24.454646Z","REJECTED","Invalid category for operation type INCOME"
+"33432123","200.00","salary","INCOME","2021-07-31T10:22:57.969737Z","ACCEPTED",""
+"Income: ","200.00"
+"Saldo: ","200.00"
