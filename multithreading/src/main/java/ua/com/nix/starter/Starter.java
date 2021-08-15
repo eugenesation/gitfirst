@@ -1,35 +1,38 @@
 package ua.com.nix.starter;
 
+import ua.com.nix.numbers.NumbersTask;
 import ua.com.nix.spammer.SpammerTask;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Starter {
 
-    List<Thread> threads = new ArrayList<>();
+    List<Integer> listOfNumbers = new ArrayList<>();
 
-    public void start() throws InterruptedException {
+    public void start() throws Exception {
 
         System.out.println("----------WELCOME TO THE TASK 1: REVERSE THREADS IN REVERSE ORDER---------");
 
+
+        SpammerTask spammerTask = new SpammerTask(0);
+        spammerTask.start();
+        spammerTask.join();
+
+        System.out.println("----------WELCOME TO THE TASK 2: NUMBERS----------");
+
         for (int i = 0; i < 50; i++) {
-            SpammerTask spammerTask = new SpammerTask();
-            spammerTask.start();
-            Thread.sleep(3);
-            threads.add(spammerTask);
+            listOfNumbers.add(i);
         }
+        NumbersTask numbersTask1 = new NumbersTask(listOfNumbers.subList(0, listOfNumbers.size() / 2));
+        NumbersTask numbersTask2 = new NumbersTask(listOfNumbers.subList(listOfNumbers.size() / 2, listOfNumbers.size()));
 
-        System.out.println();
+        numbersTask1.start();
+        numbersTask2.start();
 
-        System.out.println("In reverse order: \n");
-        Collections.reverse(threads);
-
-        for (Thread thread : threads) {
-            System.out.println("Hello from thread " + thread.getName());
-        }
-
+        numbersTask1.join();
+        numbersTask2.join();
+        System.out.println(numbersTask1.getCounter() + numbersTask2.getCounter());
     }
 
 }
